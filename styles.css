@@ -1,0 +1,121 @@
+body {
+  background-image: url("/images/background-image.jpg");
+  background-size: 20%;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Left Section - Eight Ball */
+h1 {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  margin: 40px 0px 40px 0px;
+  font-family: 'Rock Salt', cursive;
+}
+
+#ball {
+  border: 100px solid rgb(0, 0, 0);
+  border-radius: 200px;
+  height:200px;
+  width:200px;
+}
+
+/* Right Section - Chat */
+.right-section {
+  display: grid;
+  margin-top: 100px;
+  margin-right: 300px;
+}
+
+.chat-bubble-ai, .chat-bubble-user p:after {
+  color: white;
+  text-align: right;
+  margin: 0px 0px 0px 0px;
+}
+
+.chat-bubble-ai p {
+  margin: 0px 40px 20px 0px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+  background-color: #95afe9;
+  padding: 20px;
+  border-radius: 11px;
+  position: relative;
+  font-family: "Baloo 2", cursive;
+}
+
+.chat-bubble-ai p:after {
+  content: ".";
+  font-weight: bold;
+  -webkit-text-fill-color: #95afe9;
+  text-align: left;
+  font-size: 55px;
+  width: 55px;
+  height: 11px;
+  line-height: 25px;
+  border-radius: 11px;
+  background-color: #95afe9;
+  position: absolute;
+  display: block;
+  bottom: -20px;
+  left: 0;
+  z-index: -2;
+}
+
+.chat-bubble-user p {
+  margin: 40px 40px 60px 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+  background-color: #7e7e80;
+  padding: 20px;
+  border-radius: 11px;
+  position: relative;
+  font-family: "Baloo 2", cursive;
+}
+
+.chat-bubble-user p:after {
+  content: ".";
+  font-weight: bold;
+  -webkit-text-fill-color: #7e7e80;
+  text-align: left;
+  font-size: 55px;
+  width: 55px;
+  height: 11px;
+  line-height: 25px;
+  border-radius: 11px;
+  background-color: #7e7e80;
+  position: absolute;
+  display: block;
+  bottom: -20px;
+  left: 0;
+  z-index: -2;
+}
