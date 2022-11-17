@@ -46,6 +46,7 @@ h1 {
   display: grid;
   margin-top: 100px;
   margin-right: 300px;
+  color: white;
 }
 
 .chat-bubble-ai, .chat-bubble-user p:after {
@@ -54,7 +55,7 @@ h1 {
   margin: 0px 0px 0px 0px;
 }
 
-.chat-bubble-ai p {
+.chat-bubble-ai  {
   margin: 0px 40px 20px 0px;
   text-align: center;
   text-transform: uppercase;
@@ -63,13 +64,13 @@ h1 {
   font-size: 15px;
   color: white;
   background-color: #95afe9;
-  padding: 20px;
+  padding: 5px;
   border-radius: 11px;
   position: relative;
   font-family: "Baloo 2", cursive;
 }
 
-.chat-bubble-ai p:after {
+.chat-bubble-ai:after {
   content: ".";
   font-weight: bold;
   -webkit-text-fill-color: #95afe9;
@@ -118,4 +119,12 @@ h1 {
   bottom: -20px;
   left: 0;
   z-index: -2;
+}
+
+span {
+  color: white;
+  font-size: 10px;
+  text-align: right;
+  margin-top: -18px;
+  margin-right: 50px
 }
