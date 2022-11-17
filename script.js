@@ -1,17 +1,11 @@
-
-
 $(document).ready(function(){
-  let date = date.toLocaleString();
+  // Chat Bubble Variables
+  let date = Date().toLocaleString();
 
-  let $chatTime = $("span")
+  let $chatTime = $(".time-stamp")
   $chatTime.text(date);
 
-});
 
-let date = "test";
-
-let $chatTime = $("span")
-  $chatTime.text(`${Date()}`);
 
 // Random Response Function
 function randomResponse() {
@@ -42,3 +36,7 @@ function randomResponse() {
   const max = Math.floor(responseArr.length);
   return Math.floor(Math.random() * (max - min) + min);
 }
+
+
+
+});
