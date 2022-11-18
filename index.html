@@ -7,7 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script async src="script.js"></script>
 
-  <title>Mystic Eight Ball Chat</title>
+  <title>Magic Eight Ball Chat</title>
 
   <link rel="stylesheet" href="styles.css">
 
@@ -20,20 +20,34 @@
     <div class="row">
       <div class="column">
         <section class="left-section">
-          <h1>Mystic Eight Ball</h1>
+          <h1>Magic Eight Ball</h1>
           <div id="ball"></div>
         </section>
       </div>
       <div class="column">
         <section class="right-section">
-          Mystic Eight Ball
-          <div class="chat-bubble-ai">
-            <p>This is a test. Does this work?</p>
+          <div class="chat-section-wrapper">
+            <div class="chat-bubble-wrapper">
+              <span class="chat-bubble-name">Magic Eight Ball</span>
+              <div class="chat-bubble-ai">
+                <p>Welcome, who is it that comes to question the Magic Eight Ball? Please enter your name.</p>
+              </div>
+              <span class="ai-time-stamp"></span>
+            </div>
 
+            <div class="chat-bubble-wrapper">
+              <span class="user-chat-bubble-name">Chris</span>
+              <div class="chat-bubble-user">
+                <p>Test message from a user</p>
+              </div>
+              <span class="user-time-stamp"></span>
+            </div>
           </div>
-          <span class="time-stamp">Direct</span>
-          <div class="chat-bubble-user">
-            <p>Test message from a user</p>
+
+          <div class="chat-input-wrapper">
+            <form id="chat-form">
+              <input type="text" id="chat-input" class="chat-input" name="chat-input" placeholder="Type a message" value="">
+            </form>
           </div>
         </section>
       </div>

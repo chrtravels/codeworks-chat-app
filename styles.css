@@ -3,6 +3,12 @@ body {
   background-size: 20%;
 }
 
+/* Use custom font */
+@font-face {
+  font-family: 'HarryPotter-ov4z';
+  src: url('./fonts/HarryPotter-ov4z.ttf')  format('truetype');
+}
+
 .content-wrapper {
   display: flex;
   align-items: center;
@@ -28,43 +34,75 @@ body {
 /* Left Section - Eight Ball */
 h1 {
   color: white;
-  font-size: 35px;
+  font-size: 50px;
   text-align: center;
   margin: 40px 0px 40px 0px;
-  font-family: 'Rock Salt', cursive;
+  font-family: 'HarryPotter-ov4z';
 }
 
 #ball {
+  /*
   border: 100px solid rgb(0, 0, 0);
   border-radius: 200px;
   height:200px;
   width:200px;
+  */
+
+  position: relative;
+  border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  overflow: hidden;
+  background: radial-gradient(circle at 30vmin 30vmin, #444, #000);
 }
 
 /* Right Section - Chat */
 .right-section {
-  display: grid;
-  margin-top: 100px;
+  margin-top: 0px;
   margin-right: 300px;
   color: white;
+  scrollbar-color: #222222 #505050; /* Firefox scrollbar styling */
+}
+
+/* Chrome scrollbar styling */
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+  background: #505050;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  -webkit-border-radius: 1ex;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+.chat-section-wrapper {
+  margin-top: 80px;
+  width: 600px;
+  height: 600px;
+  overflow-y: scroll;
+  scroll-behavior: auto;
+}
+
+.chat-bubble-wrapper {
+  display: grid;
+  margin: 50px 0px 40px 0px;
 }
 
 .chat-bubble-ai, .chat-bubble-user p:after {
-  color: white;
   text-align: right;
   margin: 0px 0px 0px 0px;
 }
 
 .chat-bubble-ai  {
-  margin: 0px 40px 20px 0px;
+  margin: 0px 40px 0px 80px;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 1px;
   font-size: 15px;
-  color: white;
   background-color: #95afe9;
-  padding: 5px;
   border-radius: 11px;
   position: relative;
   font-family: "Baloo 2", cursive;
@@ -88,22 +126,20 @@ h1 {
   z-index: -2;
 }
 
-.chat-bubble-user p {
-  margin: 40px 40px 60px 40px;
+.chat-bubble-user {
+  margin: 0px 80px 0px 30px;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 1px;
   font-size: 15px;
-  color: white;
   background-color: #7e7e80;
-  padding: 20px;
   border-radius: 11px;
   position: relative;
   font-family: "Baloo 2", cursive;
 }
 
-.chat-bubble-user p:after {
+.chat-bubble-user:after {
   content: ".";
   font-weight: bold;
   -webkit-text-fill-color: #7e7e80;
@@ -121,10 +157,55 @@ h1 {
   z-index: -2;
 }
 
-span {
+.ai-time-stamp {
   color: white;
   font-size: 10px;
   text-align: right;
+  margin-right: 40px
+}
+
+.user-time-stamp {
+  color: white;
+  font-size: 10px;
+  text-align: right;
+  margin-right: 80px
+}
+
+.chat-bubble-name {
+  color: white;
+  font-size: 13px;
+  text-align: left;
   margin-top: -18px;
-  margin-right: 50px
+  margin-left: 80px
+}
+
+.user-chat-bubble-name {
+  color: white;
+  font-size: 13px;
+  text-align: left;
+  margin-top: -18px;
+  margin-right: 50px;
+  margin-left: 32px;
+}
+
+.chat-input {
+  margin-top: 40px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-radius: 8px;
+  color: white;
+  background-color: #5d5c5c;
+  height: 30px;
+  width: 95%;
+  border: none;
+  padding: 2px 0px 2px 20px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #969696;
+  opacity: 1; /* Firefox */
+}
+
+.chat-input:focus {
+  outline: none !important;
 }
