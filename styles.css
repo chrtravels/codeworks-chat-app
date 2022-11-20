@@ -1,5 +1,5 @@
 body {
-  background-image: url("/media/background-image.jpg");
+  background-image: url("https://raw.githubusercontent.com/chrtravels/codeworks-chat-app/main/media/background-image.jpg");
   background-size: 20%;
 }
 
