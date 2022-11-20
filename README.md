@@ -28,6 +28,10 @@ with graphics displaying the response, right before the response is also posted,
 responses from the computer are to be auto generated, it seemed to make sense to stick to YES/NO questions and
 use the classic magic eight ball responses.
 
+**Site Demo:**
+
+Site can be seen live here:  https://chrtravels.github.io/codeworks-chat-app/
+
 
 **Attribution:**
 
