@@ -112,7 +112,6 @@ h1 {
   background-color: #95afe9;
   border-radius: 11px;
   position: relative;
-  font-family: "Baloo 2", cursive;
 }
 
 .chat-bubble-ai:after {
@@ -143,7 +142,6 @@ h1 {
   background-color: #7e7e80;
   border-radius: 11px;
   position: relative;
-  font-family: "Baloo 2", cursive;
 }
 
 .chat-bubble-user:after {
