@@ -16,38 +16,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="content-wrapper">
-    <div class="row">
-      <div class="column">
-        <section class="left-section">
-          <h1>Magic Eight Ball</h1>
-          <div id="ball"></div>
-        </section>
-      </div>
-      <div class="column">
-        <section class="right-section">
-          <div class="chat-section-wrapper">
-            <div class="chat-bubble-wrapper">
-              <span class="chat-bubble-name">Magic Eight Ball</span>
-              <div class="chat-bubble-ai">
-                <p>Who is it that comes to question the Magic Eight Ball? Please enter your name.</p>
-              </div>
-              <span class="ai-time-stamp"></span>
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="column">
+          <section class="left-section">
+            <h1>Magic Eight Ball</h1>
+            <div class="eight-ball-wrapper">
+              <div class="window"></div>
+              <div id="ball"></div>
+              <div class="eightBallText floating"></div>
+              <video id="video" src="./media/smoke-video.mp4" type="video/mp4"></video>
             </div>
-          </div>
+          </section>
+        </div>
+        <div class="column">
+          <section class="right-section">
+            <div class="chat-section-wrapper">
+              <div class="chat-bubble-wrapper intro">
+                <span class="chat-bubble-name">Magic Eight Ball</span>
+                <div class="chat-bubble-ai">
+                  <p>Who is it that comes to question the Magic Eight Ball? Please enter your name.</p>
+                </div>
+                <span class="ai-time-stamp"></span>
+              </div>
+            </div>
 
-          <div class="chat-input-wrapper">
-            <form id="chat-form">
-              <input
-                type="text"
-                class="chat-input"
-                name="chat-input"
-                placeholder="Type a message"
-                value=""
-              >
-            </form>
-          </div>
-        </section>
+            <div class="chat-input-wrapper">
+              <form id="chat-form">
+                <input
+                  type="text"
+                  class="chat-input"
+                  name="chat-input"
+                  placeholder="Type a message"
+                  value=""
+                >
+              </form>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>

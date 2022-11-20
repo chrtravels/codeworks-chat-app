@@ -87,12 +87,20 @@ $(document).ready(function(){
 
   // AI loading state - simulates typing
   let loadingResponse = () => {
+    $(".eightBallText").html("");
+    let currentResponse = randomResponse();
+    let video = document.getElementById("video")
+    video.play();
+    setTimeout(function () {
+      $(".eightBallText").append(`<span>${currentResponse}</span>`);
+      chatScroll();
+    }, 6000)
     $chatPage.append(magicEightBallPost(`<span class="dots"><span><strong>.</strong></span><span><strong>.</strong></span><span><strong>.</strong></span></span>`));
     setTimeout(function () {
       console.log($eightBallId);
-      $(`#${$eightBallId.toString()}`).replaceWith(magicEightBallPost(randomResponse()));
+      $(`#${$eightBallId.toString()}`).replaceWith(magicEightBallPost(currentResponse));
       chatScroll()
-    }, 3000);
+    }, 6500);
   }
 
 
