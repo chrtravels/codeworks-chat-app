@@ -1,83 +1,114 @@
 $(document).ready(function(){
-  // Chat Bubble Variables
-  let date = Date().toLocaleString();
 
-  let $aiTimeStamp = $(".ai-time-stamp");
-  $aiTimeStamp.text(date);
+  // Random Response Function
+  function randomResponse() {
+    const responseArr = [
+      "It is certain",
+      "Reply hazy, try again",
+      "Don’t count on it",
+      "It is decidedly so",
+      "Ask again later",
+      "My reply is no",
+      "Without a doubt",
+      "As I see it, yes",
+      "Better not tell you now",
+      "My sources say no",
+      "Yes definitely",
+      "Most likely",
+      "Cannot predict now",
+      "Outlook not so good",
+      "You may rely on it",
+      "Outlook good",
+      "Concentrate and ask again",
+      "Yes",
+      "Very doubtful",
+      "Signs point to yes"
+    ]
 
-  let $userTimeStamp = $(".user-time-stamp");
-  $userTimeStamp.text(date);
+    const min = 0;
+    const max = Math.floor(responseArr.length);
+    return responseArr[Math.floor(Math.random() * (max - min) + min)];
+  }
 
+  // Get Date & Time
+  let getDateAndTime = () => {
+    return new Date(new Date().getTime()).toString()
+  }
 
-// Random Response Function
-function randomResponse() {
-  const responseArr = [
-    "It is certain",
-    "Reply hazy, try again",
-    "Don’t count on it",
-    "It is decidedly so",
-    "Ask again later",
-    "My reply is no",
-    "Without a doubt",
-    "As I see it, yes",
-    "Better not tell you now",
-    "My sources say no",
-    "Yes definitely",
-    "Most likely",
-    "Cannot predict now",
-    "Outlook not so good",
-    "You may rely on it",
-    "Outlook good",
-    "Concentrate and ask again",
-    "Yes",
-    "Very doubtful",
-    "Signs point to yes"
-  ]
+  // Create dynamic CSS IDs for targeting
+  let eightBallIdCounter = 0;
+  let $eightBallId = "";
 
-  const min = 0;
-  const max = Math.floor(responseArr.length);
-  return responseArr[Math.floor(Math.random() * (max - min) + min)];
-}
+  // Generate Post From Magic Eight Ball
+  let magicEightBallPost = (response) => {
+    eightBallIdCounter += 1;
+    $eightBallId = `chat-bubble-ai-${eightBallIdCounter}`
 
-  // Chat bubble generating functions
-  let $chatPage = $(".chat-section-wrapper")
-
-  let magicEightBallPost = () => {
     return (
-      `<div class="chat-bubble-wrapper">
+      `<div class="chat-bubble-wrapper" id=${$eightBallId}>
       <span class="chat-bubble-name">Mystic Eight Ball</span>
       <div class="chat-bubble-ai">
-        <p>${randomResponse()}</p>
+        <p>${response}</p>
       </div>
-      <span class="ai-time-stamp">${date}</span>
+      <span class="ai-time-stamp">${getDateAndTime()}</span>
       </div>`
     )
   }
 
-    let userPost = (input) => {
-      return (
-        `<div class="chat-bubble-wrapper">
-        <span class="user-chat-bubble-name">Chris</span>
-        <div class="chat-bubble-user">
-          <p>${input}</p>
-        </div>
-        <span class="user-time-stamp"></span>
-        </div>`
-      )
-    }
+  // Generate User Post
+  let userPost = (input) => {
+    return (
+      `<div class="chat-bubble-wrapper">
+      <span class="user-chat-bubble-name">${userName}</span>
+      <div class="chat-bubble-user">
+        <p>${input}</p>
+      </div>
+      <span class="user-time-stamp">${getDateAndTime()}</span>
+      </div>`
+    )
+  }
 
-    // $chatPage.append(magicEightBallPost);
+  // Assign page sections to variables
+  let $chatInput = $(".chat-input");
+  let $chatPage = $(".chat-section-wrapper")
+
+  // Chat bubble generating functions
+  let userName = "";
+
+  $chatInput.keypress(function (e) {
+    let input = e.target.value;
+
+     // Auto scrolls the chat & prevents page reload
+  let chatScroll = () => {
+    $('.chat-section-wrapper').animate({scrollTop: $('.chat-section-wrapper').prop("scrollHeight")}, 500);
+    e.target.value = "";
+    e.preventDefault();
+  }
+
+  // AI loading state - simulates typing
+  let loadingResponse = () => {
+    $chatPage.append(magicEightBallPost(`<span class="dots"><span><strong>.</strong></span><span><strong>.</strong></span><span><strong>.</strong></span></span>`));
+    setTimeout(function () {
+      console.log($eightBallId);
+      $(`#${$eightBallId.toString()}`).replaceWith(magicEightBallPost(randomResponse()));
+      chatScroll()
+    }, 3000);
+  }
 
 
-    $("#chat-input").keypress(function (e) {
-      if (e.which == 13) {
-        console.log("pressed enter")
-       // $('form#login').submit();
-       $chatPage.append(magicEightBallPost);
-
-       $('.chat-section-wrapper').animate({scrollTop: $('.chat-section-wrapper').prop("scrollHeight")}, 500);
-        return false;
+    // On "return" handle chat input & display
+    if (e.which == 13) {
+     if (userName.length === 0) {
+      userName = input;
+      $chatPage.append(magicEightBallPost(`Welcome ${input}. Ask the Magic Eight Ball any YES or NO question...`));
+      chatScroll();
+     } else {
+      $chatPage.append(userPost(input));
+      loadingResponse();
+      chatScroll()
       }
-    });
+    }
+  });
+
 
 });
