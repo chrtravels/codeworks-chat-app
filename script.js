@@ -79,38 +79,48 @@ $(document).ready(function(){
     let input = e.target.value;
 
      // Auto scrolls the chat & prevents page reload
-  let chatScroll = () => {
-    $('.chat-section-wrapper').animate({scrollTop: $('.chat-section-wrapper').prop("scrollHeight")}, 500);
-    e.target.value = "";
-    e.preventDefault();
-  }
+    let chatScroll = () => {
+      $('.chat-section-wrapper').animate({scrollTop: $('.chat-section-wrapper').prop("scrollHeight")}, 500);
+      e.target.value = "";
+      e.preventDefault();
+    }
 
-  // AI loading state - simulates typing
-  let loadingResponse = () => {
-    $(".eightBallText").html("");
-    let currentResponse = randomResponse();
-    let video = document.getElementById("video")
-    video.play();
-    setTimeout(function () {
-      $(".eightBallText").append(`<span>${currentResponse}</span>`);
-      chatScroll();
-    }, 6000)
-    $chatPage.append(magicEightBallPost(`<span class="dots"><span><strong>.</strong></span><span><strong>.</strong></span><span><strong>.</strong></span></span>`));
-    setTimeout(function () {
-      console.log($eightBallId);
-      $(`#${$eightBallId.toString()}`).replaceWith(magicEightBallPost(currentResponse));
-      chatScroll()
-    }, 6500);
-  }
+    // AI loading state - simulates typing
+    let loadingResponse = () => {
+      $(".eightBallText").html("");
+      let currentResponse = randomResponse();
+      let video = document.getElementById("video")
+
+      video.play();
+
+      setTimeout(function () {
+        $(".eightBallText").append(`<span>${currentResponse}</span>`);
+        chatScroll();
+      }, 6000)
+
+      $chatPage.append(magicEightBallPost(`<span class="dots"><span><strong>.</strong></span><span><strong>.</strong></span><span><strong>.</strong></span></span>`));
+
+      setTimeout(function () {
+        console.log($eightBallId);
+        $(`#${$eightBallId.toString()}`).replaceWith(magicEightBallPost(currentResponse));
+        chatScroll()
+      }, 6500);
+    }
 
 
     // On "return" handle chat input & display
     if (e.which == 13) {
-     if (userName.length === 0) {
-      userName = input;
-      $chatPage.append(magicEightBallPost(`Welcome ${input}. Ask the Magic Eight Ball any YES or NO question...`));
-      chatScroll();
-     } else {
+      if (userName.length === 0) {
+        if (/^[a-zA-Z]+$/.test(input)) {
+          userName = input;
+          $chatPage.append(magicEightBallPost(`Welcome ${input}. Ask the Magic Eight Ball any YES or NO question...`));
+          chatScroll();
+        } else {
+          $chatPage.append(magicEightBallPost("Please enter a VALID name"));
+          chatScroll();
+        }
+
+      } else {
       $chatPage.append(userPost(input));
       loadingResponse();
       chatScroll()
