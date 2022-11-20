@@ -40,3 +40,6 @@ https://codepen.io/kirstenallen/pen/MWwPYYm
 
 Used some of the Floating Animation CSS from here:
 https://www.geeksforgeeks.org/css-floating-animation/
+
+Used some details on how to implement the smoke from this video:
+https://youtu.be/lx3UtGiRcYA
